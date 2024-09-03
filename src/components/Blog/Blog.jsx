@@ -3,7 +3,7 @@ import './Blog.css';
 import { FaBookmark } from "react-icons/fa";
 
 const Blog = ({blog,handelAddToBookmark,handelMarkAsRead}) => {
-    const {title,cover,author,author_img,posted_date,reading_time,hashtags} = blog;
+    const {id,title,cover,author,author_img,posted_date,reading_time,hashtags} = blog;
     return (
         <div className='m-2 border-b-2 '>
             <div className='blog-background p-2 rounded-md'>
@@ -31,7 +31,7 @@ const Blog = ({blog,handelAddToBookmark,handelMarkAsRead}) => {
                     }
                 </p>
                 <button
-                onClick={()=> handelMarkAsRead(reading_time)}
+                onClick={()=> handelMarkAsRead(id,reading_time)}
                 className='text-fuchsia-800 text-sm font-bold underline' href="">Mark as read</button>
             </div>
         </div>

@@ -26,7 +26,7 @@ const Blogs = ({handelAddToBookmark,handelMarkAsRead}) => {
 };
 Blogs.propTypes = {
     handelAddToBookmark : PropTypes.func,
-    handelMarkAsRead: PropTypes.number
+    handelMarkAsRead: PropTypes.func
 }
 
 export default Blogs;
