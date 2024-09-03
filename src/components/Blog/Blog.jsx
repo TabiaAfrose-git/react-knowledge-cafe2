@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
-import './Blog.css'
+import './Blog.css';
+import { FaBookmark } from "react-icons/fa";
 
-const Blog = ({blog}) => {
+const Blog = ({blog,handelAddToBookmark,handelMarkAsRead}) => {
     const {title,cover,author,author_img,posted_date,reading_time,hashtags} = blog;
     return (
         <div className='m-2 border-b-2 '>
@@ -16,7 +17,11 @@ const Blog = ({blog}) => {
                         </div>
                     </div>
                     <div>
-                        <small className='text-sm'> {reading_time} min read</small>
+                        <small className='text-sm mx-2'> {reading_time} min read</small>
+                        <button
+                        onClick={()=> handelAddToBookmark(blog)}
+                         className='text-sm'><FaBookmark></FaBookmark>
+                        </button>
                     </div>
                 </div>
                 <h2 className="text-4xl">{title}</h2>
@@ -25,13 +30,17 @@ const Blog = ({blog}) => {
                         hashtags.map((hash,idx) => <span key = {idx}><a>{hash}</a></span>)
                     }
                 </p>
-                <a className='text-sm' href="">Mark as read</a>
+                <button
+                onClick={()=> handelMarkAsRead(reading_time)}
+                className='text-fuchsia-800 text-sm font-bold underline' href="">Mark as read</button>
             </div>
         </div>
     );
 };
 Blog.propTypes = {
-    blog: PropTypes.object.isRequired
+    blog: PropTypes.object.isRequired,
+    handelAddToBookmark: PropTypes.func,
+    handelMarkAsRead: PropTypes.number
 }
 
 export default Blog;
